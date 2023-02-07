@@ -1,12 +1,12 @@
 package com.data.structure.LinkedList;
 
-public class MyLinkedList {
+public class MyLinkedList<T> {
 
     private Node head;
     private Node tail;
     private int length;
 
-    public MyLinkedList(int value){
+    public MyLinkedList(T value){
         Node node=new Node(value);
         head=node;
         tail=node;
@@ -21,7 +21,7 @@ public class MyLinkedList {
         }
     }
 
-    public void append(int value){
+    public void append(T value){
         Node node=new Node(value);
         if(length==0){
             head=node;
@@ -33,7 +33,7 @@ public class MyLinkedList {
         length++;
     }
 
-    public void prepend(int value){
+    public void prepend(T value){
         Node node=new Node(value);
         if (length==0){
             head=node;
@@ -73,6 +73,18 @@ public class MyLinkedList {
         return temp;
     }
 
+    public Node remove(int index){
+        if(index<0 || index >= length) return null;
+        if(index ==0) removeFirst();
+        if(index == length-1) removeLast();
+        Node prev=get(index-1);
+        Node temp=prev.next;
+        prev.next=temp.next;
+        temp.next=null;
+        length--;
+        return temp;
+    }
+
     public Node get(int index){
         if(index < 0 || index >=length) return null;
         Node temp=head;
@@ -82,7 +94,7 @@ public class MyLinkedList {
         return temp;
     }
 
-    public boolean set(int index, int value){
+    public boolean set(int index, T value){
         Node temp=get(index);
         if (temp!=null){
             temp.value=value;
@@ -91,7 +103,7 @@ public class MyLinkedList {
         return false;
     }
 
-    public boolean insert(int index, int value){
+    public boolean insert(int index, T value){
         if (index<0 || index>=length) return false;
         if(index==0){
             prepend(value);
@@ -107,19 +119,36 @@ public class MyLinkedList {
         return true;
     }
 
+
+    public void reverse(){
+        // firstly: reverse head and tail
+        Node temp=head;
+        head=tail;
+        tail=temp;
+        // use after and before node to revert node direction
+        Node after;
+        Node before=null;
+        for(int i=0; i<length; i++){
+            after=temp.next;
+            temp.next=before;
+            before=temp;
+            temp=after;
+        }
+    }
+
     public int getLength() {
         return length;
     }
 
      class Node{
-        private int value;
+        private T value;
         private Node next;
 
-        Node(int value){
+        Node(T value){
             this.value=value;
         }
 
-        public int getValue(){
+        public T getValue(){
             return value;
         }
     }
