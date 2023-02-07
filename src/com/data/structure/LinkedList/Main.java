@@ -23,7 +23,13 @@ public class Main {
 //        myLinkedList.printList();
 
         //myLinkedList.removeLast();
-        myLinkedList.prepend(10);
+        //myLinkedList.prepend(10);
+        myLinkedList.append(10);
+        myLinkedList.append(7);
+        System.out.println("Get by index: "+myLinkedList.get(1).getValue());
+        myLinkedList.set(1,20);
+        System.out.println("Get by index: "+myLinkedList.get(1).getValue());
+        myLinkedList.insert(1,23);
         myLinkedList.printList();
 
     }

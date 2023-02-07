@@ -73,16 +73,54 @@ public class MyLinkedList {
         return temp;
     }
 
+    public Node get(int index){
+        if(index < 0 || index >=length) return null;
+        Node temp=head;
+        for(int i=0; i<index; i++){
+            temp=temp.next;
+        }
+        return temp;
+    }
+
+    public boolean set(int index, int value){
+        Node temp=get(index);
+        if (temp!=null){
+            temp.value=value;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean insert(int index, int value){
+        if (index<0 || index>=length) return false;
+        if(index==0){
+            prepend(value);
+        }
+        if(index==length){
+            append(value);
+        }
+        Node node=new Node(value);
+        Node temp=get(index-1);
+        node.next=temp.next;
+        temp.next=node;
+        length++;
+        return true;
+    }
+
     public int getLength() {
         return length;
     }
 
-    private class Node{
+     class Node{
         private int value;
         private Node next;
 
         Node(int value){
             this.value=value;
+        }
+
+        public int getValue(){
+            return value;
         }
     }
 
