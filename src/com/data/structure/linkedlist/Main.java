@@ -1,4 +1,4 @@
-package com.data.structure.LinkedList;
+package com.data.structure.linkedlist;
 
 public class Main {
 
