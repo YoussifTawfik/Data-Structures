@@ -1,12 +1,12 @@
 package com.data.structure.doublylinkedlist;
 
-public class MyDoublyLinkedList {
+public class MyDoublyLinkedList<T> {
 
     private Node head;
     private Node tail;
     private int length;
 
-    public MyDoublyLinkedList(int data) {
+    public MyDoublyLinkedList(T data) {
         Node node = new Node(data);
         head = node;
         tail = node;
@@ -29,7 +29,7 @@ public class MyDoublyLinkedList {
         length--;
         return temp;
     }
-    public boolean insert(int index, int value){
+    public boolean insert(int index, T value){
         if (index<0 || index>= length) return false;
         if (index==0){
             prepend(value);
@@ -50,7 +50,7 @@ public class MyDoublyLinkedList {
         return true;
     }
 
-    public boolean set(int index, int value){
+    public boolean set(int index, T value){
         Node temp=get(index);
         if(temp !=null){
             temp.value=value;
@@ -104,7 +104,7 @@ public class MyDoublyLinkedList {
         return temp;
     }
 
-    public void append(int data) {
+    public void append(T data) {
         Node node = new Node(data);
         if (length == 0) {
             head = node;
@@ -117,7 +117,7 @@ public class MyDoublyLinkedList {
         length++;
     }
 
-    public void prepend(int data){
+    public void prepend(T data){
         Node node=new Node(data);
         if (length ==0){
             head=node;
@@ -154,9 +154,9 @@ public class MyDoublyLinkedList {
     protected class Node {
         Node next;
         Node prev;
-        protected int value;
+        protected T value;
 
-        public Node(int value) {
+        public Node(T value) {
             this.value = value;
         }
     }

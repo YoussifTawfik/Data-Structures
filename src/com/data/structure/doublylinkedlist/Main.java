@@ -3,7 +3,7 @@ package com.data.structure.doublylinkedlist;
 public class Main {
 
     public static void main(String[] args) {
-        MyDoublyLinkedList myDoublyLinkedList=new MyDoublyLinkedList(5);
+        MyDoublyLinkedList<Integer> myDoublyLinkedList=new MyDoublyLinkedList<>(5);
         myDoublyLinkedList.getHead();
         myDoublyLinkedList.getTail();
         myDoublyLinkedList.getLength();
